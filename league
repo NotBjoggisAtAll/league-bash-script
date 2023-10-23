@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Check if your champion name is provided
+if [ -z "$1" ]
+then
+    echo "Please provide your champion name."
+    exit 1
+fi
+
+# Replace spaces in your champion name with hyphens
+your_champion_name=$(echo $1 | tr ' ' '-')
+
+# If an opponent's champion name is provided
+if [ -n "$2" ]
+then
+    # Replace spaces in the opponent's champion name with hyphens
+    opponent_champion_name=$(echo $2 | tr ' ' '-')
+
+    # Open the lolalytics.com versus build page for your champion against the opponent's champion
+    xdg-open "https://www.lolalytics.com/lol/$your_champion_name/vs/$opponent_champion_name/build/"
+else
+    # Open the lolalytics.com build webpage for your champion
+    xdg-open "https://www.lolalytics.com/lol/$your_champion_name/build/"
+fi
