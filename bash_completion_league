@@ -1,0 +1,13 @@
+_lol_champions() {
+    local cur prev champions
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    champions="aatrox ahri akali akshan alistar amumu anivia annie aphelios ashe aurelionsol azir bard bel>
+
+    if [[ ${cur} == * ]] ; then
+        COMPREPLY=( $(compgen -W "${champions}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _lol_champions league
